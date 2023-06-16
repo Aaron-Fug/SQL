@@ -1,0 +1,34 @@
+--Create a Clothing Shop Database
+
+CREATE TABLE Store (id INTEGER PRIMARY KEY, Name TEXT, Price REAL, Quantity INTEGER, Description TEXT);
+
+INSERT INTO Store VALUES (1,"Shirts",5.99,50,"A Crew Cut T-Shirt");
+INSERT INTO STORE VALUES (2,"Shorts",7.99,50,"A Pair of And-1 Baggy Shorts");
+INSERT INTO Store VALUES (3,"Pants",10.99,30,"A Pair of Khaki Pants Taper Fitted");
+INSERT INTO Store VALUES (4,"Jeans",15.99,30,"A Pair of Blue Denim Jeans Taper Fitted");
+INSERT INTO Store VALUES (5,"Head-band",4.99,50,"A Band Worn Around Your Head To Protect Your Face From Sweat");
+INSERT INTO Store VALUES (6,"Socks",5.99,50,"A Pair of Socks With A Logo on Each");
+INSERT INTO Store VALUES (7,"Wrist-Band",3.99,50,"A Band For Your Wrist");
+INSERT INTO Store VALUES (8,"Lanyard",4.99,100,"A Lanyard With a Logo To Keep Your Keys On");
+INSERT INTO Store VALUES (9,"Keychain",3.99,150,"A Swift Place to Keep Your Keys");
+INSERT INTO Store VALUES(10,"Sweatshirt",20.99,20,"A Sweatshirt With A Logo On The Chest");
+INSERT INTO Store VALUES (11,"Hoodie",25.99,15,"A Hoodie With a Logo On the Chest");
+INSERT INTO STORE VALUES (12,"Joggers",22.99,20,"A Pair of Joggers with a Logo On The Left Thigh");
+INSERT INTO Store VALUES (13,"Gloves",15.99,35,"A Pair of Logo Gloves");
+INSERT INTO Store VALUES (14,"Dog-tag",2.99,5,"A Dog-tag With A Logo");
+INSERT INTO Store VALUES (15,"Ring",4.99,55,"A Mood Ring WIth A Logo on it");
+
+
+
+--Display the Database Ordered by Price
+SELECT Name, Price, Quantity, Description FROM Store ORDER BY Price DESC;
+
+--Give the Average Cost of the Items in the Store
+SELECT ROUND(AVG(Price)) AS "Average Price" FROM STORE;
+
+--Give the 5 Least Expensive Items from the Store
+SELECT Name, Price FROM Store ORDER BY Price ASC LIMIT 5;
+
+--Give the Most Expensive Item in the Store
+SELECT Name, MAX(Price) AS "Most Expensive" FROM Store;
+
