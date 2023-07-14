@@ -35,13 +35,13 @@ Answer: Run Code
 
 6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 
-SQL CODE:
+SQL CODE: SELECT Product, Quantity, (price * Quantity) AS Revenue FROM FebSales WHERE location = '548 Lincoln St, Seattle, WA 98101';
 
-Answer: 
+Answer: Product: AA Batteries (4-pack),	2	sold, $7.68 Revenue
 
 7. How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 
-SQL CODE:
+SQL CODE: SELECT COUNT(Quantity) AS 'Order More than 2', AVG(Quantity * price) AS 'Avg Spent' FROM FebSales WHERE Quantity > 2 AND Quantity <> '' AND Quantity <> 'Quantity Ordered'
 
-Answer: 
+Answer: 263 Customers with an Average amount of	$13.76764258555129
 
