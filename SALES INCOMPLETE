@@ -34,7 +34,7 @@ AAA Batteries (4-pack) For $2.99
 5. What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products).
 
 SQL CODE: 
-SELECT Product, SUM(price*Quantity) AS Revenue FROM JanSales WHERE Product <> '' AND Product <> 'Product' GROUP BY Product
+SELECT Product, SUM(Quantity) * price AS Revenue FROM JanSales WHERE Product <> '' AND Product <> 'Product' GROUP BY Product;
 
 Answer: 
 Run Code
