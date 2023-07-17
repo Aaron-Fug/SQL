@@ -1,6 +1,6 @@
 #In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
 
-
+________________________________________________________________________________________________________________________________________________________________________________
 1. How many orders were placed in January? Remember to filter out the blank and incorrect order IDs like we did in the "dealing with messy data" section of the previous lesson!
  
 SQL CODE:
@@ -8,8 +8,7 @@ SELECT COUNT(orderID) AS 'Orders in January' FROM JanSales WHERE orderID <> "" A
 
 Answer: 
 9681 Orders in January
-
-
+________________________________________________________________________________________________________________________________________________________________________________
 2. How many of those orders were for an iPhone?
 
 SQL CODE: 
@@ -17,7 +16,7 @@ SELECT COUNT(*) AS 'Total iPhones' FROM JanSales WHERE Product = 'iPhone' AND or
 
 Answer: 
 379
-
+________________________________________________________________________________________________________________________________________________________________________________
 3. Select the customer account numbers for all the orders that were placed in February.
 
 SQL CODE: 
@@ -25,7 +24,7 @@ SELECT orderID FROM FebSales WHERE orderID <> '' AND orderID <> 'Order ID' AND L
 
 Answer: 
 Run Code
-
+________________________________________________________________________________________________________________________________________________________________________________
 4. Which product was the cheapest one sold in January, and what was the price?
 
 SQL CODE: 
@@ -33,7 +32,7 @@ SELECT Product, MIN(price) FROM JanSales;  OR  SELECT Product, price FROM JanSal
 
 Answer: 
 AAA Batteries (4-pack) For $2.99
-
+________________________________________________________________________________________________________________________________________________________________________________
 5. What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products).
 
 SQL CODE: 
@@ -41,7 +40,7 @@ SELECT Product, SUM(Quantity) * price AS Revenue FROM JanSales WHERE Product <> 
 
 Answer: 
 Run Code
-
+________________________________________________________________________________________________________________________________________________________________________________
 6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 
 SQL CODE: 
@@ -49,7 +48,7 @@ SELECT Product, Quantity, (price * Quantity) AS Revenue FROM FebSales WHERE loca
 
 Answer: 
 Product: AA Batteries (4-pack),	2	sold, $7.68 Revenue
-
+________________________________________________________________________________________________________________________________________________________________________________
 7. How many customers ordered more than 2 products at a time in February, and what was the average amount spent for those customers?
 
 SQL CODE: 
@@ -60,3 +59,11 @@ SELECT COUNT(Quantity) AS 'Order More than 2', AVG(Quantity * price) AS 'Avg Spe
 
 Answer: 
 263 Customers with an Average amount of	$13.76764258555129
+________________________________________________________________________________________________________________________________________________________________________________
+8. List all the products sold in Los Angeles in February, and include how many of each were sold.
+
+SQL Code:
+SELECT DISTINCT Product, SUM(Quantity) FROM FebSales WHERE location LIKE "%Los Angeles%" GROUP BY Product;
+
+Answer:
+Run Code
