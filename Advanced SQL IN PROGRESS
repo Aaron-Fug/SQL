@@ -1,0 +1,28 @@
+
+
+
+
+1.
+
+SELECT location, COUNT(Quantity) AS "Orders From Location"
+FROM JanSales
+WHERE location LIKE "%NY%"
+AND orderID <> ""
+AND orderID <> "Order ID"
+GROUP BY location
+HAVING COUNT(Quantity) > 2;
+
+
+
+
+2.
+
+SELECT Product, SUM(Quantity) AS 'How many Sold' FROM FebSales
+WHERE Product LIKE '%Headphones%'
+GROUP BY Product;
+
+3. 
+SELECT DISTINCT SUM(Quantity * price) / COUNT(orderID) AS 'Average amount' FROM FebSales feb
+LEFT JOIN customers cust
+ON feb.orderID = cust.order_id
+WHERE LENGTH(feb.orderID) = 6;
