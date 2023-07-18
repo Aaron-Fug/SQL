@@ -27,4 +27,10 @@ LEFT JOIN customers cust
 ON feb.orderID = cust.order_id
 WHERE LENGTH(feb.orderID) = 6;
 
+4.
+SELECT SUM(Quantity) / COUNT(cust.acctnum) AS 'Average amount' FROM FebSales feb
+LEFT JOIN customers cust
+ON feb.orderID = cust.order_id
+WHERE LENGTH(feb.orderID) = 6;
 
+5.
