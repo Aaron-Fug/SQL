@@ -22,7 +22,9 @@ WHERE Product LIKE '%Headphones%'
 GROUP BY Product;
 
 3. 
-SELECT DISTINCT SUM(Quantity * price) / COUNT(orderID) AS 'Average amount' FROM FebSales feb
+SELECT SUM(Quantity * price) / COUNT(orderID) AS 'Average amount' FROM FebSales feb
 LEFT JOIN customers cust
 ON feb.orderID = cust.order_id
 WHERE LENGTH(feb.orderID) = 6;
+
+
