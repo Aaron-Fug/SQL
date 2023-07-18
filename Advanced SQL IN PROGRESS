@@ -34,3 +34,8 @@ ON feb.orderID = cust.order_id
 WHERE LENGTH(feb.orderID) = 6;
 
 5.
+SELECT Product, SUM(Quantity * price) AS 'Revenue' FROM JanSales
+WHERE LENGTH(orderID) = 6
+GROUP BY Product
+ORDER BY SUM(Quantity * price) DESC
+LIMIT 1;
