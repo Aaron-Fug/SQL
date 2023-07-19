@@ -12,7 +12,14 @@ LIMIT 10;
 SELECT artist_name FROM Spotifydata
 ORDER BY duration_ms DESC
 LIMIT 1;
---What's the average danceability for the 10 most popular songs?;
 
+--What's the average danceability for the 10 most popular songs?
+SELECT AVG(danceability) FROM Spotifydata
+WHERE popularity BETWEEN 92 AND 95;
 
-SELECT * FROM Spotifydata
+OR
+
+SELECT AVG(danceability) FROM Spotifydata
+WHERE popularity IN (SELECT popularity FROM Spotifydata
+ORDER BY popularity DESC
+LIMIT 10);
