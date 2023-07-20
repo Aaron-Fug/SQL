@@ -8,6 +8,12 @@ SELECT artist_name FROM Spotifydata
 ORDER BY popularity DESC
 LIMIT 10;
 
+--What is the average popularity of each artists who's name starts with the letter T?
+SELECT DISTINCT artist_name, AVG(popularity) FROM Spotifydata
+WHERE artist_name LIKE 'T%'
+GROUP BY artist_name
+ORDER BY AVG(popularity);
+
 --What artist released the longest song? 
 SELECT artist_name FROM Spotifydata
 ORDER BY duration_ms DESC
