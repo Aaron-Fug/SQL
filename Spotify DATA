@@ -13,6 +13,9 @@ SELECT artist_name FROM Spotifydata
 ORDER BY duration_ms DESC
 LIMIT 1;
 
+--Which song has the highest tempo?
+SELECT track_name, MAX(tempo) FROM Spotifydata;
+
 --What's the average danceability for the 10 most popular songs?
 SELECT AVG(danceability) FROM Spotifydata
 WHERE popularity BETWEEN 92 AND 95;
