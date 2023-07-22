@@ -53,7 +53,14 @@ LIMIT 1;
 SELECT track_name, MAX(tempo) FROM Spotifydata;
 
 --What's the average danceability for the 10 most popular songs?
-SELECT AVG(danceability) FROM Spotifydata
-WHERE popularity IN (SELECT popularity FROM Spotifydata
-ORDER BY popularity DESC
-LIMIT 10);
+WITH Avg_dance AS(
+SELECT track_name,
+artist_name,
+popularity,
+danceability
+FROM Spotifydata
+ORDER BY popularity
+LIMIT 10
+)
+
+SELECT AVG(danceability) FROM Avg_dance;
