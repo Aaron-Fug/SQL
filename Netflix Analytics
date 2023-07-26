@@ -62,30 +62,35 @@ VALUES
     
 # The following SQL was written to answer specific questions about the content on Netflix:
 
-
+________________________________________________________________________________________________________________________________________________________________________________
 #1. How many movie titles are there in the database? (movies only, not tv shows) 
 SELECT COUNT (title) FROM "netflix_titles_info" 
  WHERE type = 'Movie';
 
+________________________________________________________________________________________________________________________________________________________________________________
 #2. When was the most recent batch of tv shows and/or movies added to the database? 
 SELECT info.title, info.date_added FROM "netflix_titles_info"
  ORDER BY date_added DESC
  LIMIT 1;
 
+________________________________________________________________________________________________________________________________________________________________________________
 #3. List all the movies and tv shows in alphabetical order. 
 SELECT title 
  FROM "netflix_titles_info"
  ORDER BY title ASC;
 
+________________________________________________________________________________________________________________________________________________________________________________
 #4. Who was the Director for the movie The Starling? 
 SELECT people.director FROM "netflix_titles_info" info
  LEFT JOIN "netflix_people" people
  ON info.show_id = people.show_id
  WHERE info.title = 'The Starling';
 
+________________________________________________________________________________________________________________________________________________________________________________
 #5. What is the oldest movie in the database and what year was it made? 
 SELECT title, release_year
  FROM "netflix_titles_info"
  WHERE type = 'Movie'
  ORDER BY release_year ASC
  LIMIT 1;
+________________________________________________________________________________________________________________________________________________________________________________
