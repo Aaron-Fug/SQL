@@ -1,7 +1,8 @@
-#
-#
-#
-
+# For this project, I downloaded Bank Account data from Kaggle.
+# Then I created a table to insert Bank Account data into.
+# Finally, I performed analytics on the data using SQL. 
+________________________________________________________________________________________________________________________________________________________________________________
+# Creating Table:
 CREATE TABLE Carddata(
 CLIENTNUM INTEGER NOT NULL,
 Attrition_Flag VARCHAR NOT NULL,
@@ -14,24 +15,34 @@ Income_Category VARCHAR NOT NULL,
 Card_Category VARCHAR NOT NULL,
 Months_on_book INTEGER NOT NULL
 )
+________________________________________________________________________________________________________________________________________________________________________________
+#Then I inserted the Bank Card Data .csv into the table.
+
+#Next, I explored the data using the following SQL. 
 
 
-
+________________________________________________________________________________________________________________________________________________________________________________
+1. How many Customers with an age of 50 or older have an income above $120,000 and attended any type of school.
 WITH EduCount AS (
 SELECT Education_Level, COUNT(Education_Level) AS 'Education_Count', Income_Category FROM carddata
 WHERE Customer_Age >= '50' AND Income_Category LIKE "%+" AND  Education_Level NOT LIKE 'U%'
-GROUP BY Education_Level)
+GROUP BY Education_Level
+)
 
 SELECT Education_Level, Income_Category, Education_Count,
 SUM(Education_Count) OVER (PARTITION BY Income_Category) AS 'Education_Count_SUM'
 FROM EduCount;
 
-
+________________________________________________________________________________________________________________________________________________________________________________
+2. How many Customers with an age of 50 or older have an income of $40,000 or below and did not attend any type of school or school is unknown.
 WITH EduCount AS (
 SELECT Education_Level, COUNT(Education_Level) AS 'Education_Count', Income_Category FROM carddata
-WHERE Customer_Age >= '50' AND Income_Category LIKE "%+" AND  Education_Level LIKE 'U%'
-GROUP BY Education_Level)
+WHERE Customer_Age >= '50' AND Income_Category LIKE "Less%" AND  Education_Level LIKE 'U%'
+GROUP BY Education_Level
+)
 
 SELECT Education_Level, Income_Category, Education_Count,
 SUM(Education_Count) OVER (PARTITION BY Income_Category) AS 'Education_Count_SUM'
 FROM EduCount;
+
+________________________________________________________________________________________________________________________________________________________________________________
