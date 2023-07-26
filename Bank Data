@@ -51,3 +51,9 @@ SELECT Income_Category, COUNT(Income_Category) AS "Income_Category_Count" FROM C
 WHERE Card_Category = 'Blue'
 GROUP BY Income_Category
 ORDER BY COUNT(Income_Category);
+
+________________________________________________________________________________________________________________________________________________________________________________
+4. What is the average number of dependents of a customer who is Married vs a customer who is single?
+SELECT Marital_Status, AVG(Dependent_count) AS "Average Number of Dependents" FROM Carddata
+WHERE Marital_Status LIKE "Marr%" OR  Marital_Status LIKE "Sing%"
+GROUP BY Marital_Status;
