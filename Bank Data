@@ -1,0 +1,37 @@
+#
+#
+#
+
+CREATE TABLE Carddata(
+CLIENTNUM INTEGER NOT NULL,
+Attrition_Flag VARCHAR NOT NULL,
+Customer_Age INTEGER NOT NULL,
+Gender VARCHAR NOT NULL,
+Dependent_count INTEGER NOT NULL,
+Education_Level VARCHAR NOT NULL,
+Marital_Status VARCHAR NOT NULL,
+Income_Category VARCHAR NOT NULL,
+Card_Category VARCHAR NOT NULL,
+Months_on_book INTEGER NOT NULL
+)
+
+
+
+WITH EduCount AS (
+SELECT Education_Level, COUNT(Education_Level) AS 'Education_Count', Income_Category FROM carddata
+WHERE Customer_Age >= '50' AND Income_Category LIKE "%+" AND  Education_Level NOT LIKE 'U%'
+GROUP BY Education_Level)
+
+SELECT Education_Level, Income_Category, Education_Count,
+SUM(Education_Count) OVER (PARTITION BY Income_Category) AS 'Education_Count_SUM'
+FROM EduCount;
+
+
+WITH EduCount AS (
+SELECT Education_Level, COUNT(Education_Level) AS 'Education_Count', Income_Category FROM carddata
+WHERE Customer_Age >= '50' AND Income_Category LIKE "%+" AND  Education_Level LIKE 'U%'
+GROUP BY Education_Level)
+
+SELECT Education_Level, Income_Category, Education_Count,
+SUM(Education_Count) OVER (PARTITION BY Income_Category) AS 'Education_Count_SUM'
+FROM EduCount;
