@@ -46,3 +46,8 @@ SUM(Education_Count) OVER (PARTITION BY Income_Category) AS 'Education_Count_SUM
 FROM EduCount;
 
 ________________________________________________________________________________________________________________________________________________________________________________
+3. How many Customers From each income category own a Blue credit card? 
+SELECT Income_Category, COUNT(Income_Category) AS "Income_Category_Count" FROM Carddata
+WHERE Card_Category = 'Blue'
+GROUP BY Income_Category
+ORDER BY COUNT(Income_Category);
