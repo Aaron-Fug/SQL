@@ -1,5 +1,4 @@
-
-
+#In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data for an Album Shop. 
 
 1. --Show Customers (their full names, customer ID, and country) who are not in the US.
 SELECT FirstName, LastName, CustomerId, Country FROM customers
